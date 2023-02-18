@@ -14,17 +14,17 @@ export default function Textform(props) {
   }
   const handleclearclick =()=>{
     settext("");
-    props.showalert("The extra spaces from the text got cleared!","success")
+    props.showalert("The the text got cleared!","success")
 }
 const handlecopyclick =()=>{
-  var text=document.getElementById("mybox")
-  navigator.clipboard.writeText(text.value)
+ 
+  navigator.clipboard.writeText(text)
   props.showalert("The text got copied to the clipboard!","success")
 }
 const handleremoveclick =()=>{
   let extraspace=text.split(/[ ]+/)
   settext(extraspace.join(" "))
-  props.showalert("The text got removed!","success")
+  props.showalert("The extra spaces got removed!","success")
 }
     //IN ORDER TO ABLE TO WRITE INSIDE THE TEXT AREA WE NEED THE HANDLECHANGE FUNCTION BECAUSE WHEN WE WRITE INSIDE THE TEXTAREA THE VALUE OF THE TEXT CHANGE AS IT IS THE STATE AVRIABLE SO WE CAN'T CHANGE IT DIREACTLY SO WE NEED TO CHANGE IT USING THE SETTEXT
     const handleChange=(event)=>{
@@ -52,7 +52,8 @@ const handleremoveclick =()=>{
   <h1>YOUR TEXT SUMMARY</h1>
   {/* now to slove the problem of addition of the word with the spaces we will use the filter  */}
   {/* filter is the method which takes the arrow function */}
-  <p>THE TEXT CONTAINS {text.split(" ").filter((element)=>{return element.length!==0}).length} WORDS AND {text.length} LETTERS</p>
+  {/* to fix the error due to the wrong word count as we add the word in the new line we will use the regular expression as /\s+/ */}
+  <p>THE TEXT CONTAINS {text.split(/\s+/).filter((element)=>{return element.length!==0}).length} WORDS AND {text.length} LETTERS</p>
   <h2>PREVIEW</h2>
   <p>{text}</p>
 </div>

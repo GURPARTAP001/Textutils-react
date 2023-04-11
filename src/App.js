@@ -40,8 +40,11 @@ function App() {
   }
   return (
     <>
+    {/* we are passing the toggle function to the navbar so that we can add the onclick functionality to the mode switch button
+    No need to pass the showalert to the navbar as the toggle function contains the showalert inside it */}
       <Navbar tittle="LEGEND" mode={mode} toggle={toggle} />
       
+      {/* this component works on the content that is dsiplayed in the alert /the content present inside the alert */}
       <Alert alert={alert} />
       
       
